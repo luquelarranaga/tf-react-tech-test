@@ -1,7 +1,7 @@
 {
-  "name": "junior-javascript-test",
+  "name": "tf-react-tech-test",
   "version": "1.0.0",
-  "description": "Junior JavaScript Developer Technical Test",
+  "description": "Javascript Technical Test",
   "engines": {
     "node": "22.22.0"
   },
