@@ -11,7 +11,7 @@ function SortBy ({setSortBy}: SortByProps) {
         setSelected(newSelection)
     }
 
-    selected === "created at" ? setSortBy("created at") : setSortBy("due date")
+    selected === "created at" ? setSortBy("createdAt") : setSortBy("dueDate")
 
     return (
     <select value={selected} onChange={handleSortBy}>
