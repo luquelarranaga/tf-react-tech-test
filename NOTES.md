@@ -14,7 +14,7 @@ Using the WAVE extension I realised I hadn't added any labels to my elements so 
 
 With more time, I would've wanted to implement the below:
 
-- Improved styling (button hover affects, better overall layout etc)
+- Improved styling (button hover affects, better overall layout etc, added margin and labels for filter bar)
 - Added functionality so that when lists are completed they are sent to the bottom
 - If due date is in the past, make the task card red or indicate it's overdue status visually another way
 - Integrate manager with calendar apps
