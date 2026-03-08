@@ -5,6 +5,7 @@
 import { useState, useEffect } from 'react';
 import { Task, Priority } from './types';
 import { getTasks, createTask, updateTask, deleteTask } from './api';
+import SelectPriority from './SelectPriority';
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -63,11 +64,7 @@ function App() {
           onChange={(e) => setNewTaskTitle(e.target.value)}
           placeholder="Add a new task..."
         />
-        <select value={priority} onChange={(e) => {setPriority(e.target.value as typeof priority)}}>
-          <option value="low">low</option>
-          <option value="medium">medium</option>
-          <option value="high">high</option>
-        </select>
+        <SelectPriority priority={priority} setPriority={setPriority}/>
         <button onClick={handleAddTask}>Add</button>
       </div>
 
