@@ -1,3 +1,5 @@
+## My choices throughout
+
 I began working on the front end elements first so that I could visualise what I was doing on the webpage, and then work my way backwards towards the API. I find that by having components rendered on the page already, it's easier for me to test and to see how they work alongside any console logs.
 
 I created a drop down selector for priority, meaning users will need to select priority when creating any tasks. Because priority will always be selected no matter what, I removed it as an optional value from it's type.
@@ -11,6 +13,12 @@ I also added front a end error message which appears if the server sends back an
 Then I applied some simple styling to the doc by creating a css file and importing it into main.jsx. I created variables for the colours, which would be helpful for maintaining a cohesive colour scheme for larger projects.
 
 Using the WAVE extension I realised I hadn't added any labels to my elements so i made sure to add those in to bring the score up to 10.
+
+## My challenges
+
+One thing I found a little tricky was the use of typescript. At Northcoders, we largely worked with Javascript so I spent the last few days researching and teaching myself TypeScript basics. Whilst it was challenging, it was also very exciting to learn a new language and I can appreciate how using types can make your code much more robust and I look forward to getting better at it!
+
+## If I had more time I would...
 
 With more time, I would've wanted to implement the below:
 
