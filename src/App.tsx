@@ -8,6 +8,9 @@ import { getTasks, createTask, updateTask, deleteTask } from './api';
 import SelectPriority from './SelectPriority';
 import Filter from './Filter';
 import SortBy from './SortBy';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -16,13 +19,13 @@ function App() {
   const [newTaskTitle, setNewTaskTitle] = useState('');
   const [priority, setPriority] = useState<Priority>("low")
   const [filter, setFilter] = useState("completed=false")
-  const [sortBy, setSortBy] = useState("created_at")
+  const [sortBy, setSortBy] = useState("")
 
   // Fetch tasks on mount
   useEffect(() => {
     void (async () => {
       try {
-        const data = await getTasks(filter);
+        const data = await getTasks(filter, sortBy);
         setTasks(data);
       } catch {
         setError('Failed to load tasks');
@@ -30,12 +33,12 @@ function App() {
         setLoading(false);
       }
     })();
-  }, [filter]);
+  }, [filter, sortBy]);
 
   // TODO: Customise this — add priority, due dates, or anything else you like!
   const handleAddTask = async () => {
     if (!newTaskTitle.trim()) return;
-    const task = await createTask({ title: newTaskTitle, completed: false, priority: priority });
+    const task = await createTask({ title: newTaskTitle, completed: false, priority: priority});
     setTasks((prev) => [...prev, task]);
     setNewTaskTitle('');
     setPriority("low")

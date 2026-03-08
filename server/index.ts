@@ -30,24 +30,51 @@ interface Task {
   priority: Priority;
 }
 
+interface PriorityOrder {
+  low: number;
+  medium: number;
+  high: number;
+}
+
 // ─── In-memory store ──────────────────────────────────────────────────────────
 
 let tasks: Task[] = [];
+
+const priorityRank: PriorityOrder = {
+  low: 3,
+  medium: 2,
+  high: 1
+}
 
 // ─── Routes ───────────────────────────────────────────────────────────────────
 
 // GET /api/tasks — return all tasks
 app.get('/api/tasks', (req: Request, res: Response) => {
-  const {completed} = req.query as {completed: string}
+  const {completed, sortBy} = req.query as {completed : string, sortBy : keyof Task}
 
-  let filteredTasks = tasks
+  let filteredTasks: Task[] = [...tasks]
 
   if (completed === "true") {
-      filteredTasks = tasks.filter((task) => {
+    filteredTasks = filteredTasks.filter((task) => {
       return task.completed === true;
-    })
+    }
+  )}
+
+  if (sortBy === "priority") {
+    filteredTasks = filteredTasks.sort((a, b) => priorityRank[a.priority] - priorityRank[b.priority])
+  } else if (sortBy) { 
+    filteredTasks = filteredTasks.sort((a, b) => {
+  if (a[sortBy] < b[sortBy]) {
+    return -1;
   }
-  res.json(filteredTasks);
+  if (a[sortBy] > b[sortBy]) {
+    return 1;
+  }
+  return 0;
+  })
+  }
+  
+  res.json(filteredTasks) 
 });
 
 // POST /api/tasks — create a new task

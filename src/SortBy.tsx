@@ -9,14 +9,13 @@ function SortBy ({setSortBy}: SortByProps) {
     const handleSortBy = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const newSelection = e.target.value
         setSelected(newSelection)
+
+        newSelection === "created at" ? setSortBy("sortBy=createdAt") : setSortBy("sortBy=priority")
     }
-
-    selected === "created at" ? setSortBy("createdAt") : setSortBy("dueDate")
-
     return (
     <select value={selected} onChange={handleSortBy}>
         <option value="created at">created at</option>
-        <option value="due date">due date</option>
+        <option value="priority">priority</option>
     </select>)
 }
 

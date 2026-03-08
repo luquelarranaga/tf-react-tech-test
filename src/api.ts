@@ -15,12 +15,21 @@ async function handleResponse<T>(res: Response): Promise<T> {
   return res.json() as Promise<T>;
 }
 
-export const getTasks = async (filter: string): Promise<Task[]> => {
+export const getTasks = async (filter: string, sortBy: string): Promise<Task[]> => {
   let baseUrl = `${BASE_URL}/tasks`
-  if (filter) {
+  console.log("I am here")
+  try {
+    if (filter && sortBy) {
+    baseUrl = `${BASE_URL}/tasks?${filter}&${sortBy}`
+  } else if (filter) {
     baseUrl = `${BASE_URL}/tasks?${filter}`
+  } else if (sortBy) {
+    baseUrl = `${BASE_URL}/tasks?${sortBy}`
+  }} catch (err) {
+    console.log(err)
   }
   const res = await fetch(baseUrl);
+  console.log("I am res>>>", res)
   return handleResponse<Task[]>(res);
 };
 
