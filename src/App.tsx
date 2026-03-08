@@ -8,9 +8,6 @@ import { getTasks, createTask, updateTask, deleteTask } from './api';
 import SelectPriority from './SelectPriority';
 import Filter from './Filter';
 import SortBy from './SortBy';
-import DatePicker from 'react-datepicker';
-import "react-datepicker/dist/react-datepicker.css";
-
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -64,26 +61,39 @@ function App() {
       <h1>Task Manager</h1>
 
       {/* TODO: Improve this input — add priority, labels, due date, etc. */}
-      <div style={{ display: 'flex', gap: 8, marginBottom: 24 }}>
+      <main className="task-manager" >
+        <div className="task-adder" style={{ display: 'flex', gap: 8, marginBottom: 24 }}>
+        <div className="task-desciption-input">
+          <label htmlFor="task description">Add task description</label>
         <input
+        id="task description"
           type="text"
           value={newTaskTitle}
           onChange={(e) => setNewTaskTitle(e.target.value)}
           placeholder="Add a new task..."
         />
-        <SelectPriority priority={priority} setPriority={setPriority}/>
-        <button onClick={handleAddTask}>Add</button>
+        </div>
+        <div className="priority-selector">
+          <SelectPriority priority={priority} setPriority={setPriority}/>
+        </div>
+        <div className='add-task-button'>
+          <label htmlFor="add task">Add task</label>
+          <button id="add task" onClick={handleAddTask}>Add!</button>
+        </div>
+      </div>
+      <div className="filter-sort">
         <Filter setFilter={setFilter}/>
         <SortBy setSortBy={setSortBy}/>
       </div>
 
+      {error && <h3 style={{ color: "rgb(199, 16, 16)" }}> Something went wrong</h3>}
       {/* TODO: Style this list — make it your own! */}
-      {tasks.length === 0 ? (
+        {tasks.length === 0 ? (
         <p>No tasks yet. Add one above!</p>
       ) : (
-        <ul style={{ listStyle: 'none', padding: 0 }}>
+        <ul className="task-list" style={{ listStyle: 'none', padding: 0 }}>
           {tasks.map((task) => (
-            <li key={task.id} style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 8 }}>
+            <li className="task-card" key={task.id} style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 8 }}>
               <span style={{ textDecoration: task.completed ? 'line-through' : 'none', flex: 1 }}>
                 {task.title}
               </span>
@@ -98,6 +108,7 @@ function App() {
           ))}
         </ul>
       )}
+      </main>
     </div>
   );
 }

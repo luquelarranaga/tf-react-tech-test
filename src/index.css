@@ -16,3 +16,51 @@ body {
 h1 {
     color: var(--text)
 }
+
+.task-manager {
+    background-color: var(--background2);
+    padding: 3% 7%;
+    border-radius: 10px;
+    width: 500px
+}
+
+.task-adder{
+    display: flex;
+    flex-direction: column;
+}
+
+.task-list{
+    display:flex;
+    flex-direction: column;
+}
+
+.task-card {
+    background-color: var(--taskBox);
+    padding: 3% 7%;
+    border-radius: 10px;
+}
+
+.filter-sort {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: small;
+}
+
+.task-desciption-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.priority-selector {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-task-button {
+    display: flex;
+    flex-direction: column;
+}

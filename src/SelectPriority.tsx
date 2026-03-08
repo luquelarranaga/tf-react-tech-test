@@ -7,11 +7,14 @@ interface SelectPriorityProp {
 
 function SelectPriority({priority, setPriority}: SelectPriorityProp ) {
     return (
-        <select value={priority} onChange={(e) => {setPriority(e.target.value as typeof priority)}}>
+        <div>
+          <label htmlFor="priority-selector">Select priority</label>
+          <select id="priority-selector" value={priority} onChange={(e) => {setPriority(e.target.value as typeof priority)}}>
           <option value="low">low</option>
           <option value="medium">medium</option>
           <option value="high">high</option>
         </select>
+        </div>
     )
 }
 
