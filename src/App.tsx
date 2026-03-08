@@ -33,7 +33,7 @@ function App() {
     const task = await createTask({ title: newTaskTitle, completed: false, priority: priority });
     setTasks((prev) => [...prev, task]);
     setNewTaskTitle('');
-    setPriority(priority)
+    setPriority("low")
   };
 
   // TODO: Expand this if you add extra fields to update
