@@ -30,9 +30,10 @@ function App() {
   // TODO: Customise this — add priority, due dates, or anything else you like!
   const handleAddTask = async () => {
     if (!newTaskTitle.trim()) return;
-    const task = await createTask({ title: newTaskTitle, completed: false });
+    const task = await createTask({ title: newTaskTitle, completed: false, priority: priority });
     setTasks((prev) => [...prev, task]);
     setNewTaskTitle('');
+    setPriority(priority)
   };
 
   // TODO: Expand this if you add extra fields to update
@@ -62,6 +63,11 @@ function App() {
           onChange={(e) => setNewTaskTitle(e.target.value)}
           placeholder="Add a new task..."
         />
+        <select value={priority} onChange={(e) => {setPriority(e.target.value as typeof priority)}}>
+          <option value="low">low</option>
+          <option value="medium">medium</option>
+          <option value="high">high</option>
+        </select>
         <button onClick={handleAddTask}>Add</button>
       </div>
 
@@ -74,6 +80,9 @@ function App() {
             <li key={task.id} style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 8 }}>
               <span style={{ textDecoration: task.completed ? 'line-through' : 'none', flex: 1 }}>
                 {task.title}
+              </span>
+              <span style={{ textDecoration: task.completed ? 'line-through' : 'none', flex: 1 }}>
+                {task.priority}
               </span>
               <button onClick={() => handleToggleComplete(task)}>
                 {task.completed ? 'Undo' : 'Complete'}
