@@ -1,11 +1,11 @@
 import { Priority } from "./types";
 
-interface SelectPriority {
+interface SelectPriorityProp {
   priority: Priority
   setPriority: React.Dispatch<React.SetStateAction<Priority>>;
 }
 
-function SelectPriority({priority, setPriority}: SelectPriority ) {
+function SelectPriority({priority, setPriority}: SelectPriorityProp ) {
     return (
         <select value={priority} onChange={(e) => {setPriority(e.target.value as typeof priority)}}>
           <option value="low">low</option>
