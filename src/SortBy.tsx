@@ -1,8 +1,5 @@
 import { useState } from "react";
-
-interface SortByProps {
-  setSortBy: React.Dispatch<React.SetStateAction<string>>;
-}
+import { SortByProps } from "./types";
 
 function SortBy ({setSortBy}: SortByProps) {
     const [selected, setSelected] = useState("created at")

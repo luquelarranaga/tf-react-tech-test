@@ -18,6 +18,7 @@ function App() {
   const [filter, setFilter] = useState("completed=false")
   const [sortBy, setSortBy] = useState("")
 
+
   // Fetch tasks on mount
   useEffect(() => {
     void (async () => {
@@ -97,7 +98,7 @@ function App() {
               <span style={{ textDecoration: task.completed ? 'line-through' : 'none', flex: 1 }}>
                 {task.title}
               </span>
-              <span style={{ textDecoration: task.completed ? 'line-through' : 'none', flex: 1 }}>
+              <span style={{ textDecoration: task.completed ? 'line-through' : 'none', flex: 1}}>
                 {task.priority}
               </span>
               <button onClick={() => handleToggleComplete(task)}>

@@ -16,3 +16,16 @@ export type NewTask = Omit<Task, 'id' | 'createdAt'>;
 
 // Used when updating a task
 export type UpdateTask = Partial<Omit<Task, 'id' | 'createdAt'>>;
+
+export interface SelectPriorityProp {
+  priority: Priority
+  setPriority: React.Dispatch<React.SetStateAction<Priority>>;
+}
+
+export interface FilterProps {
+  setFilter: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export interface SortByProps {
+  setSortBy: React.Dispatch<React.SetStateAction<string>>;
+}

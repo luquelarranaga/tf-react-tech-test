@@ -1,8 +1,6 @@
 import { useState } from "react";
+import { FilterProps } from "./types";
 
-interface FilterProps {
-  setFilter: React.Dispatch<React.SetStateAction<string>>;
-}
 
 function Filter ({setFilter}: FilterProps) {
     const [selectedFilter, setSelectedFilter] = useState("all tasks")
