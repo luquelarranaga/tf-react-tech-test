@@ -15,8 +15,12 @@ async function handleResponse<T>(res: Response): Promise<T> {
   return res.json() as Promise<T>;
 }
 
-export const getTasks = async (): Promise<Task[]> => {
-  const res = await fetch(`${BASE_URL}/tasks`);
+export const getTasks = async (filter: string): Promise<Task[]> => {
+  let baseUrl = `${BASE_URL}/tasks`
+  if (filter) {
+    baseUrl = `${BASE_URL}/tasks?${filter}`
+  }
+  const res = await fetch(baseUrl);
   return handleResponse<Task[]>(res);
 };
 

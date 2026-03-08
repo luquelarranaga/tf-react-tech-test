@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     void (async () => {
       try {
-        const data = await getTasks();
+        const data = await getTasks(filter);
         setTasks(data);
       } catch {
         setError('Failed to load tasks');
@@ -28,7 +28,7 @@ function App() {
         setLoading(false);
       }
     })();
-  }, []);
+  }, [filter]);
 
   // TODO: Customise this — add priority, due dates, or anything else you like!
   const handleAddTask = async () => {

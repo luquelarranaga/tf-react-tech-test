@@ -37,8 +37,17 @@ let tasks: Task[] = [];
 // ─── Routes ───────────────────────────────────────────────────────────────────
 
 // GET /api/tasks — return all tasks
-app.get('/api/tasks', (_req: Request, res: Response) => {
-  res.json(tasks);
+app.get('/api/tasks', (req: Request, res: Response) => {
+  const {completed} = req.query as {completed: string}
+
+  let filteredTasks = tasks
+
+  if (completed === "true") {
+      filteredTasks = tasks.filter((task) => {
+      return task.completed === true;
+    })
+  }
+  res.json(filteredTasks);
 });
 
 // POST /api/tasks — create a new task
