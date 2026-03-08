@@ -27,7 +27,7 @@ interface Task {
   title: string;
   completed: boolean;
   createdAt: string;
-  priority?: Priority;
+  priority: Priority;
 }
 
 // ─── In-memory store ──────────────────────────────────────────────────────────
@@ -43,7 +43,7 @@ app.get('/api/tasks', (_req: Request, res: Response) => {
 
 // POST /api/tasks — create a new task
 app.post('/api/tasks', (req: Request, res: Response) => {
-  const { title, priority } = req.body as { title?: string; priority?: Priority };
+  const { title, priority } = req.body as { title?: string; priority: Priority };
 
   if (!title || typeof title !== 'string' || title.trim() === '') {
     res.status(400).json({ error: 'title is required and must be a non-empty string' });
@@ -55,7 +55,7 @@ app.post('/api/tasks', (req: Request, res: Response) => {
     title: title.trim(),
     completed: false,
     createdAt: new Date().toISOString(),
-    ...(priority && { priority }),
+    priority: priority,
   };
 
   tasks.push(newTask);
