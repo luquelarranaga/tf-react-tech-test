@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { Task, Priority } from './types';
 import { getTasks, createTask, updateTask, deleteTask } from './api';
 import SelectPriority from './SelectPriority';
+import Filter from './Filter';
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -13,6 +14,7 @@ function App() {
   const [error, setError] = useState<string | null>(null);
   const [newTaskTitle, setNewTaskTitle] = useState('');
   const [priority, setPriority] = useState<Priority>("low")
+  const [filter, setFilter] = useState("completed=false")
 
   // Fetch tasks on mount
   useEffect(() => {
@@ -66,6 +68,7 @@ function App() {
         />
         <SelectPriority priority={priority} setPriority={setPriority}/>
         <button onClick={handleAddTask}>Add</button>
+        <Filter setFilter={setFilter}/>
       </div>
 
       {/* TODO: Style this list — make it your own! */}
