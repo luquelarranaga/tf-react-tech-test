@@ -3,7 +3,7 @@
 // You're welcome to split this into multiple components if you'd like!
 
 import { useState, useEffect } from 'react';
-import { Task } from './types';
+import { Task, Priority } from './types';
 import { getTasks, createTask, updateTask, deleteTask } from './api';
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [newTaskTitle, setNewTaskTitle] = useState('');
+  const [priority, setPriority] = useState<Priority>("low")
 
   // Fetch tasks on mount
   useEffect(() => {
