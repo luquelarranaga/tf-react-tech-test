@@ -11,8 +11,6 @@ function Filter ({setFilter}: FilterProps) {
         const newSelection = e.target.value
         setSelectedFilter(newSelection)
         newSelection === "completed" ? setFilter("completed=true") : setFilter("completed=false")
-        console.log("new selection in handle filter", newSelection)
-        console.log("setFilter in handle filter", setFilter)
     }
 
     return (
